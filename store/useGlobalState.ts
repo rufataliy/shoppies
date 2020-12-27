@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { getNominatedMovieIds } from "../helpers/getNominatedMovieIds";
 import { makeApiRequest } from "../helpers/makeApiRequest";
-import {API_BYIDS } from "../constants";
+import { removeFromLocalStorage } from "../helpers/removeFromLocalStorage";
+import { saveToLocalStorage } from "../helpers/saveToLocalStorage";
 
 const makeNominationMovieIdsString = () => {
   if (getNominatedMovieIds()) {
@@ -29,7 +30,20 @@ export const useGlobalState = (): ContextDefault => {
     }
   };
 
+  const addNomination = (id: string) => {
+    saveToLocalStorage(id);
+    getNominationList();
+  };
+
+  const removeNomination = (id: string) => {
+    removeFromLocalStorage(id);
+    getNominationList();
+  };
+
+  
   return {
+    addNomination,
+    removeNomination,
     nominationList,
     nominationLoading,
     movieList,
