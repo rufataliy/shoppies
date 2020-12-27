@@ -6,9 +6,11 @@ const searchParams = ["s", "y", "type", "t"];
 const handler: NextApiHandler = async (req, res) => {
   const { query } = req;
   const queryString = buildQueryString(query);
-  fetch(OMDB_BASE_URL + queryString)
+  const result = await fetch(OMDB_BASE_URL + queryString)
     .then((res) => res.json())
-    .then((data) => res.send(data));
+    .then((data) => data);
+
+  res.send(result);
 };
 
 export default handler;
