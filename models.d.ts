@@ -17,4 +17,4 @@ type ContextDefault = {
   getNominationList: () => void;
 };
 
-type SearchParams = { s: string; type?: string; year?: string; t?: string };
+type SearchParams = { s: string; type?: string; year?: string };
