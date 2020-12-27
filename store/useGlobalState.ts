@@ -3,6 +3,7 @@ import { getNominatedMovieIds } from "../helpers/getNominatedMovieIds";
 import { makeApiRequest } from "../helpers/makeApiRequest";
 import { removeFromLocalStorage } from "../helpers/removeFromLocalStorage";
 import { saveToLocalStorage } from "../helpers/saveToLocalStorage";
+import { API_SEARCH, API_BYIDS } from "../constants";
 
 const makeNominationMovieIdsString = () => {
   if (getNominatedMovieIds()) {
@@ -40,12 +41,28 @@ export const useGlobalState = (): ContextDefault => {
     getNominationList();
   };
 
-  
+  const searchMovies = (params: SearchParams) => {
+    if (!Boolean(params.s)) return;
+    let queryString = "";
+    for (let key in params) {
+      if (Boolean(params[key])) {
+        queryString += `${key}=${params[key]}&`;
+      }
+    }
+
+    makeApiRequest(
+      `${API_SEARCH}${queryString}`,
+      (data) => setMovieList(data.Search),
+      (status) => setMovieLoading(status)
+    );
+  };
+
   return {
     addNomination,
     removeNomination,
     nominationList,
     nominationLoading,
+    searchMovies,
     movieList,
     movieLoading,
     getNominationList,
