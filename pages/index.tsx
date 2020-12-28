@@ -5,6 +5,7 @@ import { SearchForm } from "../components/SearchForm";
 import { useStore } from "../store";
 import Container from "react-bootstrap/Container";
 import { Movies } from "../components/Movies";
+import { SideBar } from "../components";
 
 export default function Home() {
   const { searchMovies } = useStore();
@@ -15,7 +16,7 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <SideBar />
       <div className="search-area">
         <Container>
           <SearchForm onSubmit={(params) => searchMovies(params)} />
