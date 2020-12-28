@@ -107,12 +107,12 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
                     type="radio"
                   >
                     <Form.Label
-                      className={`btn btn-block btn-${
+                      className={`d-flex justify-content-center align-items-center btn btn-block btn-${
                         params.type === "movies" ? "" : "outline-"
                       }primary`}
                       htmlFor="type-movies"
                     >
-                      Movies
+                      Movies <i className="bi bi-film mt-n1 ml-2 d-block"></i>
                     </Form.Label>
                     <Form.Check.Input
                       onChange={(e) => handleTypeSelection(e.target.value)}
@@ -129,12 +129,12 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
                     type="radio"
                   >
                     <Form.Label
-                      className={`btn btn-block btn-${
+                      className={`d-flex justify-content-center align-items-center btn btn-block btn-${
                         params.type === "series" ? "" : "outline-"
                       }primary`}
                       htmlFor="type-series"
                     >
-                      Series
+                      Series <i className="bi bi-files mt-n1 ml-2 d-block"></i>
                     </Form.Label>
                     <Form.Check.Input
                       onChange={(e) => handleTypeSelection(e.target.value)}
@@ -151,12 +151,12 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
                     type="radio"
                   >
                     <Form.Label
-                      className={`btn btn-block btn-${
+                      className={`d-flex justify-content-center align-items-center btn btn-block btn-${
                         params.type === "episodes" ? "" : "outline-"
                       }primary`}
                       htmlFor="type-episodes"
                     >
-                      Episodes
+                      Episodes <i className="bi bi-file mt-n1 ml-2 d-block"></i>
                     </Form.Label>
                     <Form.Check.Input
                       onChange={(e) => handleTypeSelection(e.target.value)}
