@@ -2,6 +2,8 @@ $primary: #029c60;
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/swiper/swiper.scss";
+@import "../node_modules/swiper/components/navigation/navigation.scss";
 @import "./search-area.scss";
 @import "./nominations.scss";
 @import "./icons.scss";
