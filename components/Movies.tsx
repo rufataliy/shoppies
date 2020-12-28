@@ -40,6 +40,7 @@ export const Movies = () => {
             return (
               <Slide>
                 <Movie
+                  canNominate={canNominate(movie.imdbID)}
                   nominate={() => addNomination(movie.imdbID)}
                   movie={movie}
                 />
