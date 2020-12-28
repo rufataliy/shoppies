@@ -80,8 +80,8 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
         </Form.Group>
         <div className="form-dropdown-section">
           <Accordion.Collapse eventKey="0">
-            <div className="d-flex">
-              <Form.Group className="w-25 mr-3">
+            <div className="d-md-flex">
+              <Form.Group className="flex-md-grow-1 mr-md-3">
                 <Form.Label htmlFor="year">Year</Form.Label>
                 <Form.Control
                   value={params.year}
@@ -98,7 +98,7 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
                   })}
                 </Form.Control>
               </Form.Group>
-              <Form.Group className="w-75">
+              <Form.Group className="flex-grow-1 flex-md-grow-2">
                 <Form.Label htmlFor="type">Type</Form.Label>
                 <div className="d-flex">
                   <Form.Check

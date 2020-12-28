@@ -18,7 +18,7 @@ export const Movies = () => {
   };
 
   return (
-    <div className="p-5 movies">
+    <div className="p-3 p-md-5 movies">
       <Loader loading={movieLoading}>
         {!movieList && (
           <h2 className="text-center search-text">
