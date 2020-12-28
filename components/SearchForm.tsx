@@ -30,7 +30,7 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
       setParams((params) => ({ ...params, ...query }));
       onSubmit({ ...params, ...query });
     }
-  }, [query]);
+  }, [query.s, query.year, query.type]);
 
   const handleTypeSelection = (type: string) => {
     if (params.type === type) {

@@ -18,7 +18,7 @@ export const SideBar = () => {
         (status: boolean) => setLoading(status)
       );
     }
-  }, [query]);
+  }, [query.selectedId]);
 
   return (
     <>

@@ -1,5 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import Link from "next/Link";
+import { useRouter } from "next/router";
 
 interface Props {
   movie: Movie;
@@ -8,6 +10,8 @@ interface Props {
 }
 
 export const Movie: React.FC<Props> = ({ movie, nominate, canNominate }) => {
+  const { asPath } = useRouter();
+
   return (
     <div className="d-flex flex-column align-items-center justify-content-between movie">
       <h5>{movie.Title}</h5>
@@ -22,6 +26,11 @@ export const Movie: React.FC<Props> = ({ movie, nominate, canNominate }) => {
         >
           {canNominate ? <strong>nominate</strong> : "nominate"}
         </Button>
+        <Link shallow href={`${asPath}&selectedId=${movie.imdbID}`}>
+          <a className="ml-3 btn btn-outline-primary w-100">
+            <strong>View</strong>
+          </a>
+        </Link>
       </div>
     </div>
   );

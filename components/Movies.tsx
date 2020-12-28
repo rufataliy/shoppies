@@ -8,7 +8,14 @@ import { Loader } from "./Loader";
 Swiper.use([Navigation]);
 
 export const Movies = () => {
-  const { movieList, addNomination, movieLoading } = useStore();
+  const { movieList, addNomination, movieLoading, nominationList } = useStore();
+
+  const canNominate = (id: string): boolean => {
+    if (!nominationList) return true;
+    return !Boolean(
+      nominationList.find((nomination) => nomination.imdbID === id)
+    );
+  };
 
   return (
     <div className="p-5 movies">
