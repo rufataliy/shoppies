@@ -1,0 +1,64 @@
+.search-area {
+  padding: 100px 0;
+  background: rgb(3, 17, 2);
+  background: linear-gradient(
+    180deg,
+    rgba(3, 17, 2, 1) 0%,
+    rgba(2, 64, 41, 1) 100%
+  );
+  color: white;
+  input,
+  select {
+    border: none;
+    border-bottom: 1px solid $primary;
+    border-radius: 0;
+    background-color: transparent;
+    color: $primary;
+    &::placeholder {
+      color: $primary;
+    }
+  }
+  input:focus,
+  select:focus,
+  input:active,
+  select:active {
+    background-color: transparent;
+    color: $primary;
+  }
+  option {
+    background-color: rgba(2, 64, 41, 1);
+    color: $primary;
+    border: none;
+  }
+  select option:hover {
+    cursor: pointer;
+    background-color: $primary;
+    color: white;
+    border: none;
+  }
+  .input-group-text {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid $primary;
+    color: $primary;
+    cursor: pointer;
+    button {
+      background-color: transparent;
+      color: $primary;
+      border: none;
+    }
+    .append-btn {
+      margin-bottom: 0;
+      margin-top: -4px;
+      transition: 0.3s;
+    }
+    &:hover {
+      .append-btn {
+        margin-top: 0;
+        margin-bottom: -8px;
+      }
+    }
+  }
+}

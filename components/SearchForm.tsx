@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Accordion from "react-bootstrap/Accordion";
 import InputGroup from "react-bootstrap/InputGroup";
+import { useRouter } from "next/router";
 
 const defaultValues: SearchParams = {
   s: "",
@@ -22,18 +23,38 @@ interface Props {
 
 export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
   const [params, setParams] = useState(defaultValues);
+  const { query, push } = useRouter();
+
+  useEffect(() => {
+    if (query.s) {
+      setParams((params) => ({ ...params, ...query }));
+      onSubmit({ ...params, ...query });
+    }
+  }, [query]);
 
   const handleTypeSelection = (type: string) => {
-    setParams((params) => ({ ...params, type }));
+    if (params.type === type) {
+      setParams((params) => ({ ...params, type: "" }));
+    } else {
+      setParams((params) => ({ ...params, type }));
+    }
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!Boolean(params.s)) return;
+    let queryString = "?";
+    const keys = Object.keys(params);
+    keys.forEach((key, index) => {
+      console.log(key, index);
+      if (Boolean(params[key])) {
+        queryString += `${index === 0 ? "" : "&"}${key}=${params[key]}`;
+      }
+    });
 
+    push(queryString);
+  };
   return (
-    <Form
-      onSubmit={(e) => {
-        e.preventDefault();
-        onSubmit(params);
-      }}
-    >
+    <Form onSubmit={handleSubmit}>
       <Accordion defaultActiveKey="0">
         <Form.Group>
           <Form.Label htmlFor="keyword">Search</Form.Label>
@@ -50,13 +71,8 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
             />
             <InputGroup.Append>
               <InputGroup.Text id="basic-addon2">
-                {" "}
-                <Accordion.Toggle
-                  as={(props) => <span {...props}>More</span>}
-                  variant="link"
-                  eventKey="0"
-                >
-                  Advanced
+                <Accordion.Toggle eventKey="0">
+                  <i className="bi bi-chevron-down"></i>
                 </Accordion.Toggle>
               </InputGroup.Text>
             </InputGroup.Append>
@@ -65,7 +81,7 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
         <div className="form-dropdown-section">
           <Accordion.Collapse eventKey="0">
             <div className="d-flex">
-              <Form.Group>
+              <Form.Group className="w-25 mr-3">
                 <Form.Label htmlFor="year">Year</Form.Label>
                 <Form.Control
                   value={params.year}
@@ -82,12 +98,16 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
                   })}
                 </Form.Control>
               </Form.Group>
-              <Form.Group>
+              <Form.Group className="w-75">
                 <Form.Label htmlFor="type">Type</Form.Label>
                 <div className="d-flex">
-                  <Form.Check className="p-0" id="type" type="radio">
+                  <Form.Check
+                    className="p-0 mr-3 flex-grow-1"
+                    id="type"
+                    type="radio"
+                  >
                     <Form.Label
-                      className={`btn btn-${
+                      className={`btn btn-block btn-${
                         params.type === "movies" ? "" : "outline-"
                       }primary`}
                       htmlFor="type-movies"
@@ -99,13 +119,17 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
                       hidden
                       value="movies"
                       id="type-movies"
-                      type="radio"
+                      type="checkbox"
                       checked={params.type === "movies"}
                     />
                   </Form.Check>
-                  <Form.Check className="p-0" id="type-movies" type="radio">
+                  <Form.Check
+                    className="p-0 mr-3 flex-grow-1"
+                    id="type-movies"
+                    type="radio"
+                  >
                     <Form.Label
-                      className={`btn btn-${
+                      className={`btn btn-block btn-${
                         params.type === "series" ? "" : "outline-"
                       }primary`}
                       htmlFor="type-series"
@@ -117,13 +141,17 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
                       hidden
                       value="series"
                       id="type-series"
-                      type="radio"
+                      type="checkbox"
                       checked={params.type === "series"}
                     />
                   </Form.Check>
-                  <Form.Check className="p-0" id="type-episode" type="radio">
+                  <Form.Check
+                    className="p-0 flex-grow-1"
+                    id="type-episode"
+                    type="radio"
+                  >
                     <Form.Label
-                      className={`btn btn-${
+                      className={`btn btn-block btn-${
                         params.type === "episodes" ? "" : "outline-"
                       }primary`}
                       htmlFor="type-episodes"
@@ -135,7 +163,7 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
                       hidden
                       value="episodes"
                       id="type-episodes"
-                      type="radio"
+                      type="checkbox"
                       checked={params.type === "episodes"}
                     />
                   </Form.Check>
@@ -148,7 +176,6 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
           Search
         </Button>
       </Accordion>
-      {JSON.stringify(params)}
     </Form>
   );
 };
