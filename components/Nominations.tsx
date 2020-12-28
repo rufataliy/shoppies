@@ -4,12 +4,7 @@ import { useStore } from "../store";
 import { NominatedMovie } from "./NominatedMovie";
 
 export const Nominations = () => {
-  const {
-    getNominationList,
-    nominationList,
-    nominationLoading,
-    removeNomination,
-  } = useStore();
+  const { getNominationList, nominationList, removeNomination } = useStore();
 
   useEffect(() => {
     getNominationList();
