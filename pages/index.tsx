@@ -4,6 +4,7 @@ import { Nominations } from "../components/Nominations";
 import { SearchForm } from "../components/SearchForm";
 import { useStore } from "../store";
 import Container from "react-bootstrap/Container";
+import { Movies } from "../components/Movies";
 
 export default function Home() {
   const { searchMovies } = useStore();
@@ -24,6 +25,7 @@ export default function Home() {
       <main>
         <div className="main-content">
           <Nominations />
+          <Movies />
         </div>
       </main>
 

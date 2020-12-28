@@ -5,5 +5,17 @@ $primary: #029c60;
 @import "../node_modules/swiper/swiper.scss";
 @import "../node_modules/swiper/components/navigation/navigation.scss";
 @import "./search-area.scss";
+@import "./main-content.scss";
+@import "./movie.scss";
+@import "./movies.scss";
 @import "./nominations.scss";
 @import "./icons.scss";
+
+::-webkit-scrollbar {
+  background-color: transparent;
+  height: 5px;
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $primary;
+}
