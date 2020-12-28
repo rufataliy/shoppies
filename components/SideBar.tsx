@@ -45,16 +45,28 @@ export const SideBar = () => {
                       <strong>Language:</strong> <p>{selectedMovie.Language}</p>
                     </p>
                   </div>
-                  <div className="details-img">
-                    <img src={selectedMovie.Poster} alt={selectedMovie.Title} />
+                  <div className="details-img pl-2 pb-2">
+                    <img
+                      src={
+                        selectedMovie.Poster === "N/A"
+                          ? "/placeholder.svg"
+                          : selectedMovie.Poster
+                      }
+                      width={250}
+                      alt={selectedMovie.Title}
+                    />
                     <div className="d-flex w-100 justify-content-between">
                       <p className="d-flex align-items-center">
                         <i className="bi bi-film mr-2 d-block mt-n1"></i>
                         {selectedMovie.Type}
                       </p>
                       <p className="d-flex align-items-center ">
-                        <i className="bi bi-stopwatch mr-2 d-block mt-n1"></i>
-                        {selectedMovie.Runtime}
+                        {selectedMovie.Runtime !== "N/A" && (
+                          <>
+                            <i className="bi bi-stopwatch mr-2 d-block mt-n1"></i>
+                            {selectedMovie.Runtime}
+                          </>
+                        )}
                       </p>
                     </div>
                   </div>
