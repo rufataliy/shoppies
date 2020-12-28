@@ -55,7 +55,7 @@ export const SideBar = () => {
                       width={250}
                       alt={selectedMovie.Title}
                     />
-                    <div className="d-flex w-100 justify-content-between">
+                    <div className="d-flex mt-2 w-100 justify-content-between">
                       <p className="d-flex align-items-center">
                         <i className="bi bi-film mr-2 d-block mt-n1"></i>
                         {selectedMovie.Type}
