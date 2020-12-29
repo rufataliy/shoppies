@@ -4,9 +4,12 @@ import { makeApiRequest } from "../helpers";
 import { API_BYIDS } from "../constants";
 import { Loader } from "./Loader";
 import Button from "react-bootstrap/Button";
+import Head from "next/head";
+import { useStore } from "../store";
 
 export const SideBar = () => {
-  const { query, back } = useRouter();
+  const { query, pathname, push } = useRouter();
+  const { addNomination, nominationList } = useStore();
   const [selectedMovie, setSelectedMovie] = useState<MovieDetails | null>(null);
   const [loading, setLoading] = useState(true);
   const isSelected = query.selectedId ? true : false;
@@ -21,12 +24,24 @@ export const SideBar = () => {
     }
   }, [query.selectedId]);
 
-  const goBack = () => back();
+  const goBack = () => {
+    const { selectedId, ...rest } = query;
+    push({ pathname, query: { ...rest } });
+  };
+
+  const isNominated = Boolean(
+    nominationList?.find(
+      (nomination) => nomination.imdbID === selectedMovie?.imdbID
+    )
+  );
 
   return (
     <>
       <div className={`sidebar ${isSelected ? "open" : ""} pb-5`}>
         <Loader loading={loading}>
+          <Head>
+            <title>{selectedMovie?.Title} | Shoppies </title>
+          </Head>
           {selectedMovie && (
             <>
               <div className="details p-3">
@@ -107,6 +122,13 @@ export const SideBar = () => {
                   </p>
                   <p>{selectedMovie.Plot}</p>
                 </div>
+                <Button
+                  disabled={isNominated}
+                  onClick={() => addNomination(selectedMovie.imdbID)}
+                  variant="outline-primary"
+                >
+                  {isNominated ? "Nominated" : <strong>Nominate</strong>}
+                </Button>
               </div>
             </>
           )}

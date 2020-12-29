@@ -13,6 +13,8 @@ $primary-dark: #000c08;
 @import "./sidebar.scss";
 @import "./details.scss";
 @import "./loader.scss";
+@import "./footer.scss";
+@import "./main-title.scss";
 @import "./icons.scss";
 
 ::-webkit-scrollbar {
@@ -27,4 +29,5 @@ $primary-dark: #000c08;
 #__next {
   height: 100vh;
   overflow-y: auto;
+  scroll-behavior: smooth;
 }
