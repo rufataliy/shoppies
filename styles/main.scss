@@ -1,4 +1,5 @@
 $primary: #029c60;
+$primary-dark: #000c08;
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import "../node_modules/bootstrap/scss/variables";
@@ -21,4 +22,9 @@ $primary: #029c60;
 }
 ::-webkit-scrollbar-thumb {
   background-color: $primary;
+}
+
+#__next {
+  height: 100vh;
+  overflow-y: auto;
 }

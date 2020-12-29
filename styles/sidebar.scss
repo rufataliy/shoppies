@@ -6,10 +6,16 @@
   right: 0;
   transition: 0.3s;
   transform: translateX(150%);
-  background-color: white;
+  background-color: $primary-dark;
+  color: white;
   z-index: 100;
+  box-shadow: -10px 0px 15px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
   &.open {
     transform: translateX(0%);
+  }
+  .text-highlight {
+    color: $primary;
   }
 }
 .sidebar-backdrop {

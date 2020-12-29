@@ -30,22 +30,49 @@ export const SideBar = () => {
                 <div className="details-top d-flex">
                   <div className="details-about">
                     <h2>{selectedMovie.Title}</h2>
-                    <h5 className="text-secondary">{selectedMovie.Year}</h5>
-                    <p>{selectedMovie.Plot}</p>
+                    <h5 className="text-right">{selectedMovie.Year}</h5>
                     <p>
-                      <strong>Genre:</strong> <p>{selectedMovie.Genre}</p>
+                      <strong>
+                        <span className="text-highlight">Genre: </span>
+                      </strong>{" "}
+                      <span>{selectedMovie.Genre}</span>
                     </p>
                     <p>
-                      <strong>Director:</strong> <p>{selectedMovie.Director}</p>
+                      <strong>
+                        <span className="text-highlight">Director: </span>
+                      </strong>{" "}
+                      <span>{selectedMovie.Director}</span>
                     </p>
                     <p>
-                      <strong>Country:</strong> <p>{selectedMovie.Country}</p>
+                      <strong>
+                        <span className="text-highlight">Country: </span>
+                      </strong>{" "}
+                      <span>{selectedMovie.Country}</span>
                     </p>
                     <p>
-                      <strong>Language:</strong> <p>{selectedMovie.Language}</p>
+                      <strong>
+                        <span className="text-highlight">Language: </span>
+                      </strong>{" "}
+                      <span>{selectedMovie.Language}</span>
+                    </p>
+                    <p>
+                      <span>
+                        <strong>
+                          <span className="text-highlight">Box Office: </span>
+                        </strong>
+                      </span>
+                      {selectedMovie.BoxOffice}
+                    </p>
+                    <p>
+                      <span>
+                        <strong>
+                          <span className="text-highlight">Writer: </span>
+                        </strong>
+                      </span>
+                      {selectedMovie.Writer}
                     </p>
                   </div>
-                  <div className="details-img pl-2 pb-2">
+                  <div className="details-img pl-3 pb-3">
                     <img
                       src={
                         selectedMovie.Poster === "N/A"
@@ -72,18 +99,10 @@ export const SideBar = () => {
                   </div>
                 </div>
                 <div className="details-more">
-                  <p>
-                    <span>
-                      <strong>Box Office: </strong>
-                    </span>
-                    {selectedMovie.BoxOffice}
+                  <p className="text-highlight">
+                    <strong>Plot:</strong>
                   </p>
-                  <p>
-                    <span>
-                      <strong>Writer: </strong>
-                    </span>
-                    {selectedMovie.Writer}
-                  </p>
+                  <p>{selectedMovie.Plot}</p>
                 </div>
               </div>
             </>
