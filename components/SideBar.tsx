@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { makeApiRequest } from "../helpers";
 import { API_BYIDS } from "../constants";
 import { Loader } from "./Loader";
+import Button from "react-bootstrap/Button";
 
 export const SideBar = () => {
   const { query, back } = useRouter();
@@ -20,9 +21,11 @@ export const SideBar = () => {
     }
   }, [query.selectedId]);
 
+  const goBack = () => back();
+
   return (
     <>
-      <div className={`sidebar ${isSelected ? "open" : ""}`}>
+      <div className={`sidebar ${isSelected ? "open" : ""} pb-5`}>
         <Loader loading={loading}>
           {selectedMovie && (
             <>
@@ -109,8 +112,13 @@ export const SideBar = () => {
           )}
         </Loader>
       </div>
+      {isSelected && (
+        <Button onClick={goBack} variant="primary" className="close-btn p-2">
+          <i className="bi bi-x mt-n2 d-block"></i>
+        </Button>
+      )}
       {isSelected ? (
-        <div onClick={() => back()} className="sidebar-backdrop" />
+        <div onClick={goBack} className="sidebar-backdrop" />
       ) : null}
     </>
   );
