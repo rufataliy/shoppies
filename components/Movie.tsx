@@ -29,7 +29,7 @@ export const Movie: React.FC<Props> = ({ movie, nominate, canNominate }) => {
           block
           onClick={() => nominate(movie.imdbID)}
         >
-          {canNominate ? <strong>nominate</strong> : "nominate"}
+          {canNominate ? <strong>Nominate</strong> : "Nominated"}
         </Button>
         <Link shallow href={`${asPath}&selectedId=${movie.imdbID}`}>
           <a className="ml-3 btn btn-outline-primary w-100">

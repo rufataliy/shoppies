@@ -5,9 +5,11 @@ import { API_BYIDS } from "../constants";
 import { Loader } from "./Loader";
 import Button from "react-bootstrap/Button";
 import Head from "next/head";
+import { useStore } from "../store";
 
 export const SideBar = () => {
   const { query, pathname, push } = useRouter();
+  const { addNomination, nominationList } = useStore();
   const [selectedMovie, setSelectedMovie] = useState<MovieDetails | null>(null);
   const [loading, setLoading] = useState(true);
   const isSelected = query.selectedId ? true : false;
@@ -26,6 +28,12 @@ export const SideBar = () => {
     const { selectedId, ...rest } = query;
     push({ pathname, query: { ...rest } });
   };
+
+  const isNominated = Boolean(
+    nominationList?.find(
+      (nomination) => nomination.imdbID === selectedMovie.imdbID
+    )
+  );
 
   return (
     <>
@@ -114,6 +122,13 @@ export const SideBar = () => {
                   </p>
                   <p>{selectedMovie.Plot}</p>
                 </div>
+                <Button
+                  disabled={isNominated}
+                  onClick={() => addNomination(selectedMovie.imdbID)}
+                  variant="outline-primary"
+                >
+                  {isNominated ? "Nominated" : <strong>Nominate</strong>}
+                </Button>
               </div>
             </>
           )}
