@@ -30,7 +30,12 @@ export default function Home() {
         </div>
       </main>
 
-      <footer></footer>
+      <footer>
+        <div className="footer-content p-5">
+          Created with love for <a href="https://www.shopify.ca/">Shopify</a> by{" "}
+          <a href="https://rufat.tech/">Rufat Aliyev</a>
+        </div>
+      </footer>
     </div>
   );
 }

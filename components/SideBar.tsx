@@ -31,7 +31,7 @@ export const SideBar = () => {
 
   const isNominated = Boolean(
     nominationList?.find(
-      (nomination) => nomination.imdbID === selectedMovie.imdbID
+      (nomination) => nomination.imdbID === selectedMovie?.imdbID
     )
   );
 
