@@ -43,9 +43,8 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
     e.preventDefault();
     if (!Boolean(params.s)) return;
     let queryString = "?";
-    const keys = Object.keys(params);
+    const keys = Object.keys(defaultValues);
     keys.forEach((key, index) => {
-      console.log(key, index);
       if (Boolean(params[key])) {
         queryString += `${index === 0 ? "" : "&"}${key}=${params[key]}`;
       }
