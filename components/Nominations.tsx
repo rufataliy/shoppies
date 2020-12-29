@@ -12,11 +12,11 @@ export const Nominations = () => {
 
   return (
     <Container>
-      <div className="d-flex p-3 align-items-center nominations-container">
+      <div className="d-md-flex p-3 align-items-center nominations-container">
         <span>
           Nominations {nominationList ? nominationList.length : "0"}/5
         </span>
-        <div className="ml-3 d-flex nominations pt-2 pb-2">
+        <div className="ml-md-3 d-flex nominations pt-2 pb-2">
           {nominationList?.map((movie) => {
             return (
               <NominatedMovie
