@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Swiper as SlideContainer, SwiperSlide as Slide } from "swiper/react";
 import Swiper, { Navigation } from "swiper";
 import { useStore } from "../store";
 import { Movie } from "./Movie";
 import { Loader } from "./Loader";
+import { useRouter } from "next/router";
 
 Swiper.use([Navigation]);
 
 export const Movies = () => {
   const { movieList, addNomination, movieLoading, nominationList } = useStore();
-
+  const { query } = useRouter();
   const canNominate = (id: string): boolean => {
     if (!nominationList) return true;
     return !Boolean(
@@ -17,12 +18,20 @@ export const Movies = () => {
     );
   };
 
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (ref.current && query.s) {
+      ref.current.scrollIntoView();
+    }
+  }, [query, movieList, movieLoading]);
+
   return (
-    <div className="p-3 p-md-5 movies">
+    <div ref={ref} className="p-3 p-md-5 movies">
       <Loader loading={movieLoading}>
         {!movieList && (
-          <h2 className="text-center search-text">
-            <i className="bi bi-search mr-5"></i>
+          <h2 className="text-center search-text d-flex flex-wrap justify-content-center">
+            <i className="bi bi-search mr-sm-5"></i>
             <span>Your search will appear here.</span>
           </h2>
         )}
