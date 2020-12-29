@@ -35,4 +35,4 @@ yarn-error.log*
 .vercel
 
 #pm2
-.ecosystem.config.js
+ecosystem.config.js
