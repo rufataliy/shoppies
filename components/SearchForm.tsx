@@ -101,7 +101,7 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
                 <Form.Label htmlFor="type">Type</Form.Label>
                 <div className="d-flex">
                   <Form.Check
-                    className="p-0 mr-3 flex-grow-1"
+                    className="p-0 mr-md-3 mr-1 flex-grow-1"
                     id="type"
                     type="radio"
                   >
@@ -123,7 +123,7 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
                     />
                   </Form.Check>
                   <Form.Check
-                    className="p-0 mr-3 flex-grow-1"
+                    className="p-0 mr-md-3 mr-1 flex-grow-1"
                     id="type-movies"
                     type="radio"
                   >

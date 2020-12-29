@@ -27,10 +27,10 @@ export const SideBar = () => {
           {selectedMovie && (
             <>
               <div className="details p-3">
-                <div className="details-top d-flex justify-content-between">
+                <div className="details-top d-sm-flex justify-content-between">
                   <div className="details-about w-100">
                     <h2>{selectedMovie.Title}</h2>
-                    <h5 className="text-right">{selectedMovie.Year}</h5>
+                    <h5 className="text-sm-right">{selectedMovie.Year}</h5>
                     <p>
                       <strong>
                         <span className="text-highlight">Genre: </span>
@@ -72,7 +72,7 @@ export const SideBar = () => {
                       {selectedMovie.Writer}
                     </p>
                   </div>
-                  <div className="details-img pl-3 pb-3">
+                  <div className="details-img d-inline-block pl-sm-3 pb-3">
                     <img
                       src={
                         selectedMovie.Poster === "N/A"

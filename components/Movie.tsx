@@ -15,10 +15,12 @@ export const Movie: React.FC<Props> = ({ movie, nominate, canNominate }) => {
   return (
     <div className="d-flex flex-column align-items-center justify-content-between movie">
       <h5>{movie.Title}</h5>
-      <img
-        src={movie.Poster === "N/A" ? "/placeholder.svg" : movie.Poster}
-        alt={movie.Title}
-      />
+      <div className="w-100 h-75 overflow-hidden">
+        <img
+          src={movie.Poster === "N/A" ? "/placeholder.svg" : movie.Poster}
+          alt={movie.Title}
+        />
+      </div>
       <p>{movie.Year}</p>
       <div className="btn-group w-100">
         <Button
