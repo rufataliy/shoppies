@@ -13,9 +13,9 @@ export const Movie: React.FC<Props> = ({ movie, nominate, canNominate }) => {
   const { asPath } = useRouter();
 
   return (
-    <div className="d-flex flex-column align-items-center justify-content-between movie">
+    <div className="pb-2 d-flex flex-column align-items-center justify-content-between movie">
       <h5>{movie.Title}</h5>
-      <div className="w-100 h-75 overflow-hidden">
+      <div className="w-100 movie-img overflow-hidden">
         <img
           src={movie.Poster === "N/A" ? "/placeholder.svg" : movie.Poster}
           alt={movie.Title}

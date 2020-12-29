@@ -6,17 +6,18 @@ import { useStore } from "../store";
 import Container from "react-bootstrap/Container";
 import { Movies } from "../components/Movies";
 import { SideBar } from "../components";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const { searchMovies } = useStore();
+  const { query } = useRouter();
 
   return (
     <div>
       <Head>
         <title>Home | Shoppies</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <SideBar />
+      {query.selectedId ? <SideBar /> : null}
       <div className="main-title text-center pt-5">
         <h1>Shoppies</h1>
         <h5 className="mb-0">
