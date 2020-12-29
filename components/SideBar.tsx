@@ -27,8 +27,8 @@ export const SideBar = () => {
           {selectedMovie && (
             <>
               <div className="details p-3">
-                <div className="details-top d-flex">
-                  <div className="details-about">
+                <div className="details-top d-flex justify-content-between">
+                  <div className="details-about w-100">
                     <h2>{selectedMovie.Title}</h2>
                     <h5 className="text-right">{selectedMovie.Year}</h5>
                     <p>
