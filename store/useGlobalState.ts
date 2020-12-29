@@ -32,6 +32,7 @@ export const useGlobalState = (): ContextDefault => {
   };
 
   const addNomination = (id: string) => {
+    if (nominationList?.length > 4) return;
     saveToLocalStorage(id);
     getNominationList();
   };
