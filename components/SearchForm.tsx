@@ -23,6 +23,7 @@ interface Props {
 
 export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
   const [params, setParams] = useState(defaultValues);
+  const [errors, setErrors] = useState({ s: false });
   const { query, push } = useRouter();
 
   useEffect(() => {
@@ -41,7 +42,8 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!Boolean(params.s)) return;
+    if (!Boolean(params.s)) return setErrors({ s: true });
+    setErrors({ s: false });
     let queryString = "?";
     const keys = Object.keys(defaultValues);
     keys.forEach((key, index) => {
@@ -61,10 +63,12 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
             <Form.Control
               name="keyword"
               id="keyword"
+              isInvalid={errors.s}
               type="text"
-              onChange={(e) =>
-                setParams((params) => ({ ...params, s: e.target.value }))
-              }
+              onChange={(e) => {
+                setErrors({ s: false });
+                setParams((params) => ({ ...params, s: e.target.value }));
+              }}
               value={params.s}
               placeholder="Type a move title . . "
             />
