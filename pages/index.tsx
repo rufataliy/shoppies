@@ -17,12 +17,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SideBar />
+      <div className="main-title text-center pt-5">
+        <h1>Shoppies</h1>
+        <h5 className="mb-0">
+          by <a href="https://rufat.tech/">Rufat</a>
+        </h5>
+      </div>
       <div className="search-area">
         <Container>
           <SearchForm onSubmit={(params) => searchMovies(params)} />
         </Container>
       </div>
-
       <main>
         <div className="main-content">
           <Nominations />
