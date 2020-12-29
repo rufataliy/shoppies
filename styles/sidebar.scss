@@ -4,7 +4,7 @@
   width: 630px;
   max-width: 100%;
   right: 0;
-  transition: 0.3s;
+  transition: transform 0.4s linear;
   transform: translateX(150%);
   background-color: $primary-dark;
   color: white;

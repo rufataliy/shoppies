@@ -15,9 +15,9 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Home | Shoppies</title>
+        <title key="home">Home | Shoppies</title>
       </Head>
-      {query.selectedId ? <SideBar /> : null}
+      <SideBar />
       <div className="main-title text-center pt-5">
         <h1>Shoppies</h1>
         <h5 className="mb-0">

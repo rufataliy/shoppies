@@ -22,6 +22,7 @@ export const SideBar = () => {
         (status: boolean) => setLoading(status)
       );
     }
+    return () => setSelectedMovie(null);
   }, [query.selectedId]);
 
   const goBack = () => {
@@ -39,9 +40,11 @@ export const SideBar = () => {
     <>
       <div className={`sidebar ${isSelected ? "open" : ""} pb-5`}>
         <Loader loading={loading}>
-          <Head>
-            <title>{selectedMovie?.Title} | Shoppies </title>
-          </Head>
+          {selectedMovie && (
+            <Head>
+              <title key="sidebar">{selectedMovie?.Title} | Shoppies </title>
+            </Head>
+          )}
           {selectedMovie && (
             <>
               <div className="details p-3">
