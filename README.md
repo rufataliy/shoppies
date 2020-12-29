@@ -6,7 +6,7 @@ The project can be visited [here](https://shoppies.rufat.tech)
 
 ### ENV
 
-First, you will need to have an environment variable for API_KEY_OMDB to make the project work. You can get your key [here](https://www.omdbapi.com/apikey.aspx)
+First, you will need to have an environment variable for `API_KEY_OMDB` to make the project work. You can get your key [here](https://www.omdbapi.com/apikey.aspx)
 
 Second, run the development server:
 
