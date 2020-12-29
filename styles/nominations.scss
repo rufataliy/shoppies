@@ -1,0 +1,16 @@
+.nominations-container {
+  white-space: nowrap;
+  min-height: 90px;
+  .nominations {
+    overflow-x: auto;
+  }
+  & button:first-child {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+  & button:nth-child(2) {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    font-size: 1.5rem;
+  }
+}
