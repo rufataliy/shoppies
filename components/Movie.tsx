@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-import Link from "next/Link";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 interface Props {
