@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Accordion from "react-bootstrap/Accordion";
 import InputGroup from "react-bootstrap/InputGroup";
 import { useRouter } from "next/router";
+import { useStore } from "../store";
 
 const defaultValues: SearchParams = {
   s: "",
@@ -24,6 +25,7 @@ interface Props {
 export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
   const [params, setParams] = useState(defaultValues);
   const [errors, setErrors] = useState({ s: false });
+  const { resetMovieList } = useStore();
   const { query, push } = useRouter();
 
   useEffect(() => {
@@ -40,6 +42,7 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
       setParams((params) => ({ ...params, type }));
     }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!Boolean(params.s)) return setErrors({ s: true });
@@ -54,8 +57,16 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
 
     push(queryString);
   };
+
+  const handleReset = () => {
+    setErrors({ s: false });
+    setParams(defaultValues);
+    resetMovieList();
+    push({ query: {} });
+  };
+
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onReset={handleReset} onSubmit={handleSubmit}>
       <Accordion defaultActiveKey="0">
         <Form.Group>
           <Form.Label htmlFor="keyword">Search</Form.Label>
@@ -74,7 +85,7 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
             />
             <InputGroup.Append>
               <InputGroup.Text id="basic-addon2">
-                <Accordion.Toggle eventKey="0">
+                <Accordion.Toggle className="pr-3 pl-3" eventKey="0">
                   <i className="bi bi-chevron-down"></i>
                 </Accordion.Toggle>
               </InputGroup.Text>
@@ -97,7 +108,7 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
                 >
                   <option value="">not selected</option>
                   {years.map((year) => {
-                    return <option>{year}</option>;
+                    return <option key={year}>{year}</option>;
                   })}
                 </Form.Control>
               </Form.Group>
@@ -175,9 +186,14 @@ export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
             </div>
           </Accordion.Collapse>
         </div>
-        <Button block type="submit">
-          Search
-        </Button>
+        <div className="d-flex">
+          <Button block className="mr-3" type="submit">
+            Search
+          </Button>
+          <Button block variant="outline-primary" className="mt-0" type="reset">
+            Reset
+          </Button>
+        </div>
       </Accordion>
     </Form>
   );

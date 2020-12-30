@@ -31,6 +31,8 @@ export const useGlobalState = (): ContextDefault => {
     }
   };
 
+  const resetMovieList = () => setMovieList(null);
+
   const addNomination = (id: string) => {
     if (nominationList?.length > 4) return;
     saveToLocalStorage(id);
@@ -67,5 +69,6 @@ export const useGlobalState = (): ContextDefault => {
     movieList,
     movieLoading,
     getNominationList,
+    resetMovieList,
   };
 };
