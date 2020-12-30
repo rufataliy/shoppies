@@ -28,4 +28,4 @@ jobs:
         USERNAME: ${{ secrets.SERVER_USERNAME }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSH_KEY }}
-        script: cd  ${{secrets.PROJECT_PATH}} && git pull && npm run build && pm2 start ecosystem.config.js
+        script: cd  ${{secrets.PROJECT_PATH}} && git checkout main && git pull && npm run build && pm2 start ecosystem.config.js
