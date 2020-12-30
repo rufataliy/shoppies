@@ -25,6 +25,12 @@
     background-color: transparent;
     color: $primary;
   }
+  .was-validated .form-control:invalid,
+  .form-control.is-invalid {
+    &::placeholder {
+      color: $danger;
+    }
+  }
   option {
     background-color: rgba(2, 64, 41, 1);
     color: $primary;
