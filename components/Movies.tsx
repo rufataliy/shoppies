@@ -38,7 +38,7 @@ export const Movies = () => {
         <SlideContainer breakpoints={breakpoints} navigation freeMode>
           {movieList?.map((movie) => {
             return (
-              <Slide>
+              <Slide key={movie.imdbID}>
                 <Movie
                   canNominate={canNominate(movie.imdbID)}
                   nominate={() => addNomination(movie.imdbID)}

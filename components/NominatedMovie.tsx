@@ -14,7 +14,7 @@ export const NominatedMovie: React.FC<Props> = ({
   const { push, asPath } = useRouter();
 
   return (
-    <div className="mr-3 d-flex nomination">
+    <div key={movie.imdbID} className="mr-3 d-flex nomination">
       <Button
         onClick={() => push(`${asPath}&selectedId=${movie.imdbID}`)}
         variant="outline-primary"
