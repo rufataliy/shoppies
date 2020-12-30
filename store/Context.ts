@@ -9,6 +9,7 @@ const defaultContext: ContextDefault = {
   movieLoading: false,
   searchMovies: ({}) => {},
   getNominationList: () => {},
+  resetMovieList: () => {},
 };
 
 export const Context = React.createContext<ContextDefault>(defaultContext);
