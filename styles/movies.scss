@@ -1,4 +1,8 @@
 .movies {
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
   .swiper-button-next,
   .swiper-button-prev {
     color: white;
